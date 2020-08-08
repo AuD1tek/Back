@@ -7,3 +7,7 @@
 * ### [VK Группа Vi2 Games | Unturned](https://vk.com/vi2games_unt)
 * ### [Discord Группа](https://discord.com/invite/E7k8Q7A)
 * ### [Telegram Канал](https://t.me/aud1t3k_community)
+
+## Поддержка:
+* ### [QIWI](https://qiwi.me/aud1t3k)
+* ### [DonationAlerts](https://www.donationalerts.com/r/aud1t3k)
