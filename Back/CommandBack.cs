@@ -6,33 +6,34 @@ using UnityEngine;
 
 namespace Back
 {
+    // Класс команды
     public class CommandBack : IRocketCommand
     {
-        public AllowedCaller AllowedCaller => AllowedCaller.Player; 
-        public string Name => "back";
-        public string Help => "Возвращает игрока на место сметри";
-        public string Syntax => "/back";
-        public List<string> Aliases => new List<string>() { "b" };
-        public List<string> Permissions => new List<string>() { "vi2g.back" };
+        public AllowedCaller AllowedCaller => AllowedCaller.Player; // Тот кто может вызивать данную команду
+        public string Name => "back"; // Имя команды
+        public string Help => "Возвращает игрока на место сметри"; // Информация о команде
+        public string Syntax => "/back"; // Синтаксис команды
+        public List<string> Aliases => new List<string>() { "b" }; // Возможное вариации команды
+        public List<string> Permissions => new List<string>() { "vi2g.back" }; // Пермишионы команды
 
 
-        private UnturnedPlayer player;
+        private UnturnedPlayer player; // игрок который вызвал команду
 
 
+        // Функция которая будет срабатывать при использование данной команды
         public void Execute(IRocketPlayer caller, string[] command)
         {
             player = (UnturnedPlayer)caller; // Получаем игрока который вызвал команду
 
 
-            
-            if (Back.Instance.LastPlayerPositions.TryGetValue(player.CSteamID, out Vector3 lastPosition))
+            if (Back.Instance.LastPlayersPosition.TryGetValue(player.CSteamID, out Vector3 lastPosition))
             {
-                UnturnedChat.Say(player, Back.Instance.Translate("command_back_successful"), Color.green);
+                UnturnedChat.Say(player, Back.Instance.Translate("command_back_successful"), Color.green); // Написать игроку сообщение что он был успешно телепортирован на место смерти
                 player.Teleport(lastPosition, player.Rotation); // Телепортировать игрока в указаные кординаты
             }
             else
             {
-                UnturnedChat.Say(player, Back.Instance.Translate("command_lastposition_not_found"), Color.red);
+                UnturnedChat.Say(player, Back.Instance.Translate("command_lastposition_not_found"), Color.red); // Написать игроку что телепортироваться не возможно
             }
         }
     }

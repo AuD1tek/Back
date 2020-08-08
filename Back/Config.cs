@@ -2,6 +2,7 @@
 
 namespace Back
 {
+    // Класс конфигурации
     public class Config : IRocketPluginConfiguration
     {
 
